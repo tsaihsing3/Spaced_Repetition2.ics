@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <!-- as a CS50X Final Project author @tsaihsing3(Github)-->
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+
+        <!-- https://favicon.io/emoji-favicons/spiral-calendar/ -->
+        <!-- <link href="favicon.ico" rel="icon" > -->
+        <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+
+        <!-- JS, Popper.js, and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+        <!-- <script  type="text/javascript">document.write("You have to say text type( not really)")</script>-->
+
+    <script >
+
+        //great job by @bobspace from  https://gist.github.com/bobspace/2712980
+        const CSS_COLOR_NAMES = [
+          "AliceBlue",
+          "AntiqueWhite",
+          "Aqua",
+          "Aquamarine",
+          "Azure",
+          "Beige",
+          "Bisque",
+          "Black",
+          "BlanchedAlmond",
+          "Blue",
+          "BlueViolet",
+          "Brown",
+          "BurlyWood",
+          "CadetBlue",
+          "Chartreuse",
+          "Chocolate",
+          "Coral",
+          "CornflowerBlue",
+          "Cornsilk",
+          "Crimson",
+          "Cyan",
+          "DarkBlue",
+          "DarkCyan",
+          "DarkGoldenRod",
+          "DarkGray",
+          "DarkGrey",
+          "DarkGreen",
+          "DarkKhaki",
+          "DarkMagenta",
+          "DarkOliveGreen",
+          "DarkOrange",
+          "DarkOrchid",
+          "DarkRed",
+          "DarkSalmon",
+          "DarkSeaGreen",
+          "DarkSlateBlue",
+          "DarkSlateGray",
+          "DarkSlateGrey",
+          "DarkTurquoise",
+          "DarkViolet",
+          "DeepPink",
+          "DeepSkyBlue",
+          "DimGray",
+          "DimGrey",
+          "DodgerBlue",
+          "FireBrick",
+          "FloralWhite",
+          "ForestGreen",
+          "Fuchsia",
+          "Gainsboro",
+          "GhostWhite",
+          "Gold",
+          "GoldenRod",
+          "Gray",
+          "Grey",
+          "Green",
+          "GreenYellow",
+          "HoneyDew",
+          "HotPink",
+          "IndianRed",
+          "Indigo",
+          "Ivory",
+          "Khaki",
+          "Lavender",
+          "LavenderBlush",
+          "LawnGreen",
+          "LemonChiffon",
+          "LightBlue",
+          "LightCoral",
+          "LightCyan",
+          "LightGoldenRodYellow",
+          "LightGray",
+          "LightGrey",
+          "LightGreen",
+          "LightPink",
+          "LightSalmon",
+          "LightSeaGreen",
+          "LightSkyBlue",
+          "LightSlateGray",
+          "LightSlateGrey",
+          "LightSteelBlue",
+          "LightYellow",
+          "Lime",
+          "LimeGreen",
+          "Linen",
+          "Magenta",
+          "Maroon",
+          "MediumAquaMarine",
+          "MediumBlue",
+          "MediumOrchid",
+          "MediumPurple",
+          "MediumSeaGreen",
+          "MediumSlateBlue",
+          "MediumSpringGreen",
+          "MediumTurquoise",
+          "MediumVioletRed",
+          "MidnightBlue",
+          "MintCream",
+          "MistyRose",
+          "Moccasin",
+          "NavajoWhite",
+          "Navy",
+          "OldLace",
+          "Olive",
+          "OliveDrab",
+          "Orange",
+          "OrangeRed",
+          "Orchid",
+          "PaleGoldenRod",
+          "PaleGreen",
+          "PaleTurquoise",
+          "PaleVioletRed",
+          "PapayaWhip",
+          "PeachPuff",
+          "Peru",
+          "Pink",
+          "Plum",
+          "PowderBlue",
+          "Purple",
+          "RebeccaPurple",
+          "Red",
+          "RosyBrown",
+          "RoyalBlue",
+          "SaddleBrown",
+          "Salmon",
+          "SandyBrown",
+          "SeaGreen",
+          "SeaShell",
+          "Sienna",
+          "Silver",
+          "SkyBlue",
+          "SlateBlue",
+          "SlateGray",
+          "SlateGrey",
+          "Snow",
+          "SpringGreen",
+          "SteelBlue",
+          "Tan",
+          "Teal",
+          "Thistle",
+          "Tomato",
+          "Turquoise",
+          "Violet",
+          "Wheat",
+          "White",
+          "WhiteSmoke",
+          "Yellow",
+          "YellowGreen",
+        ];
+
+        const VCAL_BEGIN_STRING = "BEGIN:VCALENDAR\nPRODID:Spaced_Repetition to .ics\nVERSION:2.0\nCALSCALE:GREGORIAN\nMETHOD:PUBLISH\nX-WR-CALNAME:Spaced Repetition";
+        const VCAL_END_STRING = "END:VCALENDAR";
+        const VEVENT_BEGIN_STRING ="BEGIN:VEVENT";
+        const VEVENT_END_STRING ="END:VEVENT";
+
+        // not a good method but enough for UID property in .ics
+        function createUUID() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+
+        function changeDiv1(text)
+        {
+            let div1 = document.getElementById("div1");
+            div1.innerHTML = text;
+        }
+
+        function addZero(s)
+        {
+            if (s.length == 1)
+            {
+                return '0' + s;
+            }
+              
+            else
+            {
+                return s;
+            }
+              
+        }
+        function formatDate(date){
+            let fyear = date.getFullYear().toString();
+            let fmonth = addZero((date.getMonth() + 1).toString()) ;
+            let fday = addZero(date.getDate().toString());
+            let formattedDate = fyear + fmonth + fday;
+            return formattedDate
+        }
+        var setCalStartFlag = 0;
+        
+        function setEventColor(){
+            var getRandomColor = function(){    
+                return  CSS_COLOR_NAMES[Math.floor(Math.random()* CSS_COLOR_NAMES.length)]    ;    
+            }   
+            var eventColor = document.getElementById("inputTaskColor");
+
+            eventColor.innerHTML = getRandomColor();
+            eventColor.style.color = eventColor.innerHTML ;
+        }
+
+        function updateTextColor()
+        {
+            var eventColor = document.getElementById("inputTaskColor");  
+            
+        }
+
+        function setStartDate()
+        {
+            let formattedDate = formatDate(new Date());
+
+            let startDate = document.getElementById("inputStartDate");
+            startDate.setAttribute("value",formattedDate);
+
+            let CalStartDate = document.getElementById("inputCalStartDate");
+            CalStartDate.setAttribute("value",formattedDate);
+
+            setCalStartFlag = 1;
+        }
+        function insertAfter(newElement,targetElement)
+        {
+            var parent = targetElement.parentNode;
+            if(parent.lastChild == targetElement)
+            {
+                parent.appendChild(newElement);
+            }
+            else
+            {
+                parent.insertBefore(newElement,targetElement.nextSibling);
+            }
+        }
+   
+
+        window.onload = function (){  
+
+            setEventColor();
+            setStartDate();
+            
+            updateCal();
+            
+        }// inside windows.onload()
+
+
+
+
+        weeks = new Array()
+        function updateCal(){
+            let calStartString = document.getElementById("inputCalStartDate").value;
+            var calStart = new Date();
+            calStart.setFullYear(calStartString.slice(0,4), calStartString.slice(4,6) - 1, calStartString.slice(6,8));
+
+            // look for the first Monday
+            let monday1 = new Date();
+            monday1.setFullYear(calStart.getFullYear(), calStart.getMonth(), calStart.getDate());
+            while(monday1.getDay() != 1)
+            {
+                monday1.setDate(monday1.getDate() - 1);
+            }
+
+
+            days = new Array();
+            days[0] = monday1;
+
+
+            weeksDates = new Array() 
+            for (var i = 0; i < 5; i++)
+            {
+                weekDates = new Array();
+                var weekbody = document.getElementById("week"+(i+1)+"body");
+                // remove all children elements
+                weekbody.innerHTML = ""
+
+                for (var j = 0; j < 7; j++)
+                {
+                    day = new Date();
+                    day.setFullYear(monday1.getFullYear(),monday1.getMonth(),(monday1.getDate() + j + (i * 7)));
+                        
+                    weekDates.push(day);
+                    days.push(day);
+
+                    thisMonday = weekDates[0];
+
+                    let dayString = formatDate(day) ;
+                    let dayItem = document.createElement("tr");
+
+                    let thNode = document.createElement("th");
+
+
+                    thNode.setAttribute("scope","row");
+
+                    thNode.setAttribute("id",dayString + 'th');
+
+                    thNode.innerHTML = dayString.slice(4,6) + '.' + dayString.slice(6,8);
+
+                    dayItem.appendChild(thNode);
+
+                    //add a new tr-item as a day
+                    weekbody.appendChild(dayItem);
+                }
+                weeksDates.push(weekDates);
+            }
+
+            //add all tasks
+        for (var i = 0; i < tasks.length; i++ )
+        {
+            addCalEvent(tasks[i]);
+        }
+
+
+        }//updateCal()
+
+
+
+
+        function addElement () {
+            var currentDiv = document.getElementById("div1");
+            currentDiv.innerHTML = "new innerHTML";
+        }
+
+        function addTaskList(task){
+
+            let taskListGroup = document.getElementById("tasksList");
+            let taskListItem = document.createElement("li");
+            taskListItem.innerHTML = task["name"] +"-" +formatDate(task["startDate"]);
+
+            var classNode = document.createAttribute("class");
+            classNode.value = "list-group-item";
+            taskListItem.setAttributeNode(classNode);
+
+            // add a badge display 
+            //e.g. <span class="badge">14</span>
+            var spanNode = document.createElement("span");
+
+            var classNode = document.createAttribute("class");
+            classNode.value = "badge";
+
+            
+            spanNode.innerHTML = (task.repetitions.length ).toString();
+            spanNode.setAttributeNode(classNode);
+
+            taskListItem.appendChild(spanNode); 
+
+
+            taskListItem.style.color = task["color"];
+            // add this task as a list-group-item   
+            taskListGroup.appendChild(taskListItem);
+        }
+
+        function addCalEvent(task){
+            for (var i = 0; i < task.repetitions.length; i++)
+            {
+                let taskName = task["name"];
+                repDate = task["repetitions"][i];
+                repDateString = formatDate(task["repetitions"][i]);
+
+                let sameDayTd = document.getElementById(repDateString + 'td');
+                // if the td element exists (same day has already had task(s))
+                if (sameDayTd != null)
+                {
+                    let parentTr = sameDayTd.parentNode;
+
+                    // <tr> <th></th> <td id=dayd>taskName(i+1)</td> </tr>
+                    let newTr = document.createElement("tr");
+
+                    let thNode = document.createElement("th");
+                    newTr.appendChild(thNode);
+
+                    let taskTd = document.createElement("td");
+                    taskTd.innerHTML = taskName +"(" + (i + 1) +")";
+                    taskTd.setAttribute("id",repDateString + 'td');
+                    taskTd.style.color = task["color"];
+                    newTr.appendChild(taskTd);
+
+                    insertAfter(newTr, parentTr);
+                }
+                else
+                {
+                    let dayTh = document.getElementById(repDateString + 'th');
+
+                    // if the th element exists (this day is displayed on Cal)
+                    if (dayTh != null)
+                    {
+                        let taskNode = document.createElement("td")
+                        taskNode.innerHTML = taskName +"(" + (i + 1) +")";
+                        taskNode.setAttribute("id",repDateString + 'td');
+                        taskNode.style.color = task["color"];
+                        insertAfter(taskNode, dayTh);
+                    }
+                }                
+            }            
+        }
+
+
+    function taskEventsString(task)
+    {
+        let eventsArray = new Array();
+        for (var i = 0; i < task["repetitions"].length; i++)
+        {
+            let eventArray = new Array();
+            eventArray.push(VEVENT_BEGIN_STRING);
+            eventArray.push("DTSTART;VALUE=DATE:" + formatDate(task["repetitions"][i]));
+            eventArray.push("DTEND;VALUE=DATE:" + formatDate(task["repetitions"][i]));
+
+            eventArray.push("DTSTAMP:" + formatDate(task["repetitions"][i])+ "T000000Z");
+            
+            eventArray.push("UID:" + createUUID());
+            eventArray.push("COLOR:"+ task["color"]);
+            eventArray.push("SUMMARY:" + task["name"] +"(" + (i + 1).toString() + ")");
+            eventArray.push(VEVENT_END_STRING);
+            eventArray.push("\n");
+
+            let eventString = eventArray.join("\n");
+            eventsArray.push(eventString);
+        }
+        eventsArray.push("\n");
+        let eventsString = eventsArray.join("\n");
+        return eventsString;
+    }
+
+
+    function updateFile(contentArray,filename)
+    {
+
+        changeDiv1(filename);
+        let txtBlob = new Blob(contentArray,{type:"text/calendar"});
+
+        let txtURL = URL.createObjectURL(txtBlob);
+        let exportBth = document.getElementById("ExportBtn");
+        exportBth.setAttribute("download", filename);
+        exportBth.setAttribute("href", txtURL );
+        
+
+    }
+
+
+
+
+    var tasks = new Array();
+    var tasksNames = new Array();
+
+    var tasksContent = new Array();
+    tasksContent.push(VCAL_BEGIN_STRING,"\n"); 
+    tasksContent.push(VCAL_END_STRING);
+
+
+
+    function addTask()
+        {
+            // get name and color from input
+            let taskName = document.getElementById("inputTaskName").value;
+            let taskColor = document.getElementById("inputTaskColor").innerHTML;
+            //get startDate
+            let startDateString = document.getElementById("inputStartDate").value;
+            var startDate1 = new Date();
+            startDate1.setFullYear(startDateString.slice(0,4), startDateString.slice(4,6) - 1, startDateString.slice(6,8));
+            //get interval from input
+            //var radios = document.getElementsByName("loan")
+            let radios = document.getElementsByName("selectInterval");
+            //changeDiv1("add task yes");
+            var intervalArray = new Array();
+            for (var i = 0; i < radios.length; i++)
+            {
+                if(radios[i].checked == true)
+                {
+
+                    let inputInterval = radios[i];
+                    // if a programmed interval mode
+                    if (["Ebbinghaus","Pimsleur","17gre"].indexOf(radios[i].id) > -1 )
+                    {
+
+                        intervalArrays = inputInterval.value.split(',');
+                        for (var j = 0; j < intervalArrays.length; j++)//
+                        {//
+                            intervalArray.push(parseInt(intervalArrays[j]));
+                        }//
+                    }
+                    else if ( radios[i].id == "UniformIntervalsRadio")
+                    {
+                        let uniformInterval = parseInt(document.getElementById("UniformIntervalsInterval").value);
+                        let uniformTimes = parseInt(document.getElementById("UniformIntervalsTimes").value);
+
+                        for (var j = 0; j < uniformTimes; j++)
+                        {
+                            intervalArray.push(uniformInterval);
+                        }
+
+                    }
+                    else if (radios[i].id == "CustomIntervalsRadio" )
+                    {
+                        let customIntervalsString = document.getElementById("CustomIntervals").value;
+                        intervalArrays = customIntervalsString.split(',');
+                        for (var j = 0; j < intervalArrays.length; j++)//
+                            {
+                                intervalArray.push(parseInt(intervalArrays[j]));
+                            }
+                        
+                    }
+                    //changeDiv1(typeof(intervalArray[2]));
+                }
+            }
+            // build a new task Object
+            task = {name:taskName, startDate:startDate1, intervals: intervalArray, color: taskColor};
+
+
+            //Calculate repetitions' dates
+            task.repetitions = new Array();
+            task.repetitionsString = new Array();
+
+            task.repetitions[0] = startDate1;
+            for (var i = 1; i <= task.intervals.length; i++)
+            {
+                var rep = new Date();
+                rep.setFullYear(task.repetitions[i-1].getFullYear(),task.repetitions[i-1].getMonth(),task.repetitions[i-1].getDate());
+                 
+                rep.setDate(rep.getDate() + task.intervals[i-1]);
+                task.repetitions.push(rep);
+            }   
+
+
+            tasks.push(task);//for later use in updateCal or export
+            tasksNames.push(task["name"]);
+
+            
+
+            addTaskList(task); 
+
+            addCalEvent(task);
+
+            //update a default event colour
+            setEventColor();
+
+            // add events to second to last place, aka, insert before VCAL_END_STRING
+            tasksContent.splice((tasksContent.length - 1), 0, taskEventsString(task)); 
+
+            //update URL of File based on new tasksContent Array
+            updateFile(tasksContent,"Spaced_Repetition.ics");
+
+
+        }// addTask
+
+        </script>
+        <title>Spaced_Repetition to .ics </title>
+    </head>
+
+    <body>
+        <div class="page-header mb-3">
+          <h1>Spaced_Repetition to .ics </h1>
+        </div>
+        <div class = "col-10 mx-auto my-2">
+            <div class="card  float-right mb-1 border-0 bg-light" >
+                <div class="card-body">
+
+                    <form class="form-inline">
+                        <!-- update Calendar Display-->
+                        <div class="form-group row" >
+                            <label class="col-form-label" for="inputCalStartDate">Calendar Starts From:</label>
+                            <div >
+                                <input type="text" class="form-control mx-1" name="inputCalStartDate" id="inputCalStartDate">
+                            </div>
+                            <div class="float-right ">
+                                <button type="button" class="btn btn-outline-info" onclick="updateCal()"> Update Calendar </button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    <div class="card-group col-10 mx-auto my-5" >
+        <div class="card col" >
+            <h5 class="card-header bg-transparent text-center border-0">Week 1</h5>
+            <table class="table table-borderless week-table" >
+              <thead>
+                <tr>
+                  <th scope="col">Day</th>
+                  <th scope="col">Task</th>
+                </tr>
+              </thead>
+              <tbody id="week1body">
+                <tr>
+                    <th scope="row">Date</th>
+                    <td>Task Name</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+        <div class="card col">
+            <h5 class="card-header bg-transparent text-center border-0">Week 2</h5>
+            <div id = "week2table">
+                <table class="table table-borderless week-table" >
+                  <thead>
+                    <tr>
+                      <th scope="col">Day</th>
+                      <th scope="col">Task</th>
+                    </tr>
+                  </thead>
+                  <tbody id="week2body">
+                    <tr>
+                        <th scope="row">Date</th>
+                        <td>Task Name</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="card col">
+        <h5 class="card-header bg-transparent text-center border-0">Week 3</h5>
+        
+            <table class="table table-borderless week-table">
+              <thead>
+                <tr>
+                  <th scope="col">Day</th>
+                  <th scope="col">Task</th>
+                </tr>
+              </thead>
+              <tbody id="week3body">
+                <tr>
+                    <th scope="row">Date</th>
+                    <td>Task Name</td>
+                </tr>
+              </tbody>
+            </table>   
+            </div> 
+        <div class="card col">
+
+            <h5 class="card-header bg-transparent text-center border-0">Week 4</h5>
+            <table class="table table-borderless week-table">
+              <thead>
+                <tr>
+                  <th scope="col">Day</th>
+                  <th scope="col">Task</th>
+                </tr>
+              </thead>
+              <tbody id="week4body">
+                <tr>
+                    <th scope="row" id="stringth">Date</th>
+                    <td>Task Name</td>
+                </tr>
+              </tbody>
+            </table>  
+        </div>
+        <div class="card col">
+            <h5 class="card-header bg-transparent text-center border-0"> Week 5</h5>
+            <table class="table table-borderless week-table">
+              <thead>
+                <tr>
+                  <th scope="col">Day</th>
+                  <th scope="col">Task</th>
+                </tr>
+              </thead>
+              <tbody id="week5body">
+                <tr>
+                    <th scope="row">Date</th>
+                    <td>Task Name</td>
+                </tr>
+              </tbody>
+            </table>  
+        </div>
+
+    </div>
+
+
+    <div class="card-deck col-11 mx-auto mb-3">
+        <div class="card col-4"   style="width: 18rem;" >
+            <div class="card-header bg-transparent text-center mb-2" >Tasks</div>
+
+            <div>
+                <ul class="list-group mb-3 list-group-flush" id="tasksList">
+                  <li class="list-group-item">Task Name-StartDate <span class="badge">repetition times</span> </li>
+
+                </ul>
+            </div>
+            <div class="row">
+                <div class="mb-3 mx-auto col-8" >
+                    <a  class="btn btn-link"  href="#" role="button" id="ExportBtn">Export to iCalendar File (.ics)</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card col-8"   style="width: 18rem;"  >
+            <div class="card-header bg-transparent text-center mb-2 " >Add a New Task</div>
+            </form>
+                <div class="form-group row" >
+                    <div class="col-2">
+                        <label for="inputTaskName">Task Name:</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" name="inputTaskName" placeholder="Task1" value="Biology" id="inputTaskName">
+                    </div>
+                </div>
+
+                <div class="form-group row" >
+                    <div class="col-2">
+                        <label for="selectColor" class="col-form-label" >Colour:</label>
+                    </div>
+                    <div class="col-4 ">                        
+                        <label for="selectColor" class="col-form-label" id="inputTaskColor">ColourName</label>
+                    </div>
+                    <div class="col-4 ">
+                        <button type="button" class="btn btn-outline-info" onclick="setEventColor()">New Random Colour</button>
+                    </div>
+
+                </div>
+
+                <div class="form-group row" >
+                    <!--Radio, choose the intervals  -->
+                    <div class="col-2">
+
+                        <label class="col-form-label" for="selectInterval" >Intervals:</label>
+                    </div>
+
+                    <div class="form-check col-10 ">
+                        <div class="form-row mb-1">
+                            <input class="form-check-input" type="radio" name="selectInterval" id="Ebbinghaus" value="1,2,6,31" checked >
+                            <label class="form-check-label col-3 ml-2" for="Ebbinghaus">Classic Ebbinghaus:</label>
+                            <label class="form-check-label" for="Ebbinghaus"> 1, 2, 6, 31 day(s) </label>
+                        </div>
+
+                        <div class="form-row mb-1">
+                            <input class="form-check-input" type="radio" name="selectInterval" id="Pimsleur" value="1,5,25,90"  >
+                            <label class="form-check-label col-3 ml-2" for="Pimsleur">Pimsleur :</label>
+                            <label class="form-check-label" for="Pimsleur">1, 5, 25 day(s), 3 months </label>
+                        </div>
+
+                        <div class="form-row mb-1">
+                            <input class="form-check-input" type="radio" name="selectInterval" id="17gre" value="1,2,4,7,15">
+                            <label class="form-check-label col-3 ml-2" for="17gre">17gre :</label>
+                            <label class="form-check-label " for="17gre">1, 2, 4, 7, 15 day(s) </label>
+                        </div>
+
+
+                        <div class="form-row mb-1">
+                            <div class="input-group">
+                                <input class="form-check-input" type="radio" name="selectInterval" id="UniformIntervalsRadio" >
+                                <label class="form-check-label col-3" for="UniformIntervalsInterval">Uniform Intervals:</label>
+                                <div class="input-group-prepend ml-2 ">
+                                    <span class="input-group-text"> every</span>
+                                </div>
+                                <input type="text" class="form-control"  id="UniformIntervalsInterval" placeholder="2">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text  ">day(s) for </span>
+                                </div>
+                                <input type="text" class="form-control"id="UniformIntervalsTimes" placeholder="5">
+                                <div class="input-group-append ">
+                                    <span class="input-group-text">times </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row mb-1">
+                            <div class="input-group ">
+                                <input class="form-check-input" type="radio" name="selectInterval" id="CustomIntervalsRadio">
+                                <label class="form-check-label col-3" for="CustomIntervals">Custom Interval:</label>
+                                <input type="text" class="form-control ml-2" id="CustomIntervals" placeholder="1, 1, 2, 3, 5, 8 (delimiter has to be ',' ) ">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">day(s)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group row" >
+                    <label class="col-form-label col-2" for="inputStartDate">StartDate:</label>
+                    <div class="col ">
+                        <input type="text" class="form-control" name="CustomInterval" id="inputStartDate">
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <button type="submit" class="btn btn-light mb-3 col-3 mx-auto" onclick="addTask()">Add a Task</button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+    <div class="col-11 mx-auto mb-2">
+
+        <div class="card border-light " >
+          <div class="card-header">Specification:</div>
+          <div class="card-body">
+            <h5 class="card-title">Background</h5>
+            <p class="card-text">What is Spaced Repetition</p>
+            <h5 class="card-title">Usage</h5>
+            <p class="card-text">Select intervals and add a task</p>
+            <p class="card-text">Preview in a 5-week calendar</p>
+            <p class="card-text">Export to a .ics file</p>
+            <p class="card-text">Import .ics to other calendar services</p>
+          </div>
+          </div>
+        </div>
+    </div>
+
+    
+
+    </body>
+</html>
