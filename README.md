@@ -1,6 +1,7 @@
 # Spaced_Repetition2.ics
-Set your custom intervals and export a **spaced repetitions** calendar in ics format.
+Set your custom intervals and export a **spaced repetitions** calendar in ics format
 
+online: https://tsaihsing3.github.io/Spaced_Repetition2.ics/
 
 ![](https://img.shields.io/badge/BootStrap-Ver4.1.0-purple.svg)
 
